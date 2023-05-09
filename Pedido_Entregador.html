@@ -21,7 +21,9 @@
                 <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
                 <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
                 <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <button class="btn btn-outline-secondary" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Visualizar</button>
+                <button id="BTN_Aceitar" class="btn btn-outline-success" type="button" name="btn_pedido" onclick="VisualBTN()">Aceitar</button>
+                <button id="BTN_Recusar" class="btn btn-outline-danger" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Recusar</button>
+                <a id="BTN_Visualizar" href="Visualiza_Pedido.html" style="display: none;"><button class="btn btn-outline-secondary" type="button" name="btn_pedido">Visualizar</button></a>
             </div>
             <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
                 <h5>Pedido #0001</h5><br>
