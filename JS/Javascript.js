@@ -105,3 +105,51 @@ function VisualBTN(){
     $("#BTN_Recusar" ).hide();
     $("#BTN_Visualizar" ).show();
 }
+
+
+function Fade(){
+    $('#fade2').fadeOut();
+    setTimeout(() => {
+        $('#fade').fadeIn();
+    }, 1000);
+    
+}
+
+function VoltarLogin(){
+    $('#fade').fadeOut();
+    setTimeout(() => {
+        $('#fade2').fadeIn();
+    }, 1000);
+    
+}
+
+function CadUser(){
+    $('#fade').fadeOut();
+    setTimeout(() => {
+        $('#formUser').fadeIn();
+    }, 1000);
+    
+}
+
+function CadEntr(){
+    $('#fade').fadeOut();
+    setTimeout(() => {
+        $('#formEntr').fadeIn();
+    }, 1000);
+    
+}
+
+function VoltarEntr(){
+    $('#formEntr').fadeOut();
+    setTimeout(() => {
+        $('#fade').fadeIn();
+    }, 1000);
+    
+}
+function VoltarUser(){
+    $('#formUser').fadeOut();
+    setTimeout(() => {
+        $('#fade').fadeIn();
+    }, 1000);
+    
+}
