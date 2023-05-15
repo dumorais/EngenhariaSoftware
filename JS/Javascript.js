@@ -1,4 +1,4 @@
-var div = '<nav class="navbar navbar-expand-lg navbar-light mb-2" style="background-color: #70007C;"><a class="navbar-brand" href="Entregadores.html" style="color: #E4E460;">Flash Entregas</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNavDropdown"><ul class="navbar-nav" id="nav"><li class="nav-item"><a class="nav-link" href="Entregadores.html">Entregadores <span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="Usuarios.html">Usuários</a></li><li class="nav-item"><a class="nav-link" href="Endereco.html">Endereços</a> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cadastros </a> <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="Cadastro_Entregadores.html">Entregadores</a> <a class="dropdown-item" href="Cadastro_Usuarios.html">Usuários</a> <a class="dropdown-item" href="Cadastro_Endereco.html">Endereços</a> </div> </li> </li> <li><a class="mr-2 position-absolute" style="right: 0 !important;" href="Pedido_Entregador.html"><button type="button" class="btn btn-outline-light">Pedidos</button></a></li> <li><a class="mr-2 position-absolute" style="right: 0 !important;" href="Pedido.html"><button type="button" class="btn btn-outline-light">Pedido</button></a></li></ul></div></nav>';
+var div = '<nav class="navbar navbar-expand-lg navbar-light mb-2" style="background-color: #70007C;"><a class="navbar-brand" href="Entregadores.html" style="color: #E4E460;">Flash Entregas</a><button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button><div class="collapse navbar-collapse" id="navbarNavDropdown"><ul class="navbar-nav" id="nav"><li class="nav-item"><a class="nav-link" href="Entregadores.html">Entregadores <span class="sr-only">(current)</span></a></li><li class="nav-item"><a class="nav-link" href="Usuarios.html">Usuários</a></li><li class="nav-item"><a class="nav-link" href="Endereco.html">Endereços</a> <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cadastros </a> <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> <a class="dropdown-item" href="Cadastro_Entregadores.html">Entregadores</a> <a class="dropdown-item" href="Cadastro_Usuarios.html">Usuários</a> <a class="dropdown-item" href="Cadastro_Endereco.html">Endereços</a> </div> </li> </li> <li><a class="mr-2 position-absolute" style="right: 0 !important;" href="Pedido_Entregador.html"><button type="button" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i></button></a></li> <li><a class="mr-2 position-absolute" style="right: 44px !important;" href="Pedido.html"><button type="button" class="btn btn-outline-light"><i class="fa fa-motorcycle" aria-hidden="true"></i></button></a></li></ul></div></nav>';
 const element = document.getElementById("header-nav");
 element.innerHTML = div;
 
@@ -151,5 +151,39 @@ function VoltarUser(){
     setTimeout(() => {
         $('#fade').fadeIn();
     }, 1000);
+    
+}
+
+function ChangeTabHist(){
+    var elem = document.getElementById("pedido_historico");
+    elem.className = "btn btn-dark text-white atual_hist";
+    var elem2 = document.getElementById("pedido_atual");
+    elem2.className = "btn btn-light atual_hist";
+    $('#atual').fadeOut();
+    setTimeout(() => {
+        $('#hist').fadeIn();
+    }, 1000);
+    setTimeout(() => {
+        document.getElementById("hist").className = "col-12 d-flex flex-wrap";
+    }, 1000);
+    
+}
+
+function ChangeTab(){
+    var elem = document.getElementById("pedido_atual");
+    elem.className = "btn btn-dark text-white atual_hist";
+    var elem2 = document.getElementById("pedido_historico");
+    elem2.className = "btn btn-light atual_hist";
+    $('#hist').fadeOut();
+
+    setTimeout(() => {
+        document.getElementById("hist").className = "col-12";
+    }, 390);
+    
+    setTimeout(() => {
+        $('#atual').fadeIn();
+    }, 1000);
+ 
+    
     
 }

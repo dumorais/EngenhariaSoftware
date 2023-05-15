@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <header>
+        <link rel="stylesheet" href="Css\Style.css">
+        <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    </header>
+    <body onload="ActiveBTN()">
+    <div id="header-nav"></div>
+    
+    <div class="w-50 mx-auto mb-4">
+        <h2 class="text-center w-100">Pedidos</h2>
+    </div>
+
+    <div class="btn-group mx-auto d-table mb-4">
+            <button id="pedido_atual" type="button" class="btn btn-dark text-white" onclick="ChangeTab()">Atual</button>
+            <button id="pedido_historico" type="button" class="btn btn-light" onclick="ChangeTabHist()">Histórico</button>
+    </div>
+
+        <div id="atual" class="rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-auto">
+            <h5>Pedido #0001</h5><br>
+            <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
+            <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
+            <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
+            <label class="w-auto text-left pl-5" >Status:</label>
+            <div class="jumping-dots-loader pr-5">
+                <label>Procurando entregador</label>
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+
+        <div id="hist" class="col-12" style="margin-left: 11% !important; display: none;">
+            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
+                <h5>Pedido #0001</h5><br>
+                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
+                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
+                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
+                <label>Status:</label>&nbsp;<label>Finalizado</label>
+            </div>
+            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
+                <h5>Pedido #0001</h5><br>
+                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
+                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
+                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
+                <label>Status:</label>&nbsp;<label>Finalizado</label>
+            </div>
+        </div>
+    
+    </body>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
+    <script type = "text/javascript" src="JS/Javascript.js"></script>
+
+</html>
+
