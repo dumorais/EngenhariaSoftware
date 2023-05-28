@@ -34,7 +34,10 @@
                     <a class="dropdown-item" href="Cadastro_Endereco.php">Endereços</a> 
                 </div> </li> </li> 
                 <li><a class="mr-2 position-absolute" style="right: 80px !important;" href="Pedido_Entregador.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i></button></a></li> 
+                <?php 
+                if(isset($_SESSION['id_cliente'])){ ?>
                 <li><a class="mr-2 position-absolute" style="right: 125px !important;" href="Pedido.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-motorcycle" aria-hidden="true"></i></button></a></li>
+                <?php } ?>
                 <form action="PHP/logout.php"><li><button style="right: 0px !important;"  type="submit" class="btn btn-outline-light mr-2 position-absolute">Logout</button></li></form>
             </ul>
             <?php 

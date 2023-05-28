@@ -1,34 +1,40 @@
 <?php 
 session_start();
-//inicia uma nova sessão ou resume uma sessão existente
+include('PHP/services.php'); 
 ?>
 <!DOCTYPE html>
 <html>
     <body onload="ActiveBTN()">
-    <?php include('Header.php'); 
-        //Puxando o header pelo php
+    <?php 
+        include('Header.php'); 
+        $enderecos = GetEnderecos($_SESSION['id_cliente']);
+        $pagamentos = GetPagamentos();
     ?>
     
     <div class="w-50 mx-auto mb-5">
         <h2 class="text-center w-100">Faça seu pedido!</h2>
     </div>
 
-    <form class="row  text-center mx-auto border border-dark rounded w-50 pt-2 pb-2 mt-4" action="PHP\CadEntregador.php" method="post" name="form_entregadores">    
+    <form class="row  text-center mx-auto border border-dark rounded w-50 pt-2 pb-2 mt-4" action="PHP\pedido.php" method="post" name="form_entregadores">    
     
         <div class="col-12 text-center">
             <label>Endereço de retirada:</label><br><input class="w-50" type="text" placeholder="Endereço Completo" value="" name="Endereco_Retirada"> <br> <br>
             <label>Endereço de entrega:</label> <br>
-            <select class="form-select w-50" style="width: 53%;" aria-label="Default select example">
-            <option value="1">Teste</option> 
+            <select name="Endereco_Entrega" class="form-select w-50" style="width: 53%;" aria-label="Default select example">
+            <?php while($ende=mysqli_fetch_array($enderecos)){    ?>
+            <option value=<?= $ende['id_endereco']?>><?= $ende['rua']?>, <?= $ende['numero']?></option> 
+            <?php } ?>
             </select> <br> <br>
             <label>Forma de Pagamento:</label> <br>
-            <select class="form-select w-50" style="width: 53%;" aria-label="Default select example">
-                <option value="1">Cartão</option>
+            <select name="Pagamento" class="form-select w-50" style="width: 53%;" aria-label="Default select example">
+            <?php while($pag=mysqli_fetch_array($pagamentos)){    ?>
+                <option value=<?= $pag['id_pagamento']?>><?= $pag['desc']?></option>
+            <?php } ?>
             </select>
         </div>
         <br><br>
         <div class="col-12 text-center mt-4">
-            <button class="btn btn-outline-secondary" type="submit" name="btn_salvar" formaction="PHP\CadEntregador.php">Pedir</button>
+            <button class="btn btn-outline-secondary" type="submit" name="btn_salvar">Pedir</button>
         </div>
     </form>
     

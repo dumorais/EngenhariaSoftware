@@ -8,6 +8,11 @@
         $resultado=mysqli_query(GetMysql(), $sql);
         return $resultado;    
     }
+    function GetPagamentos(){
+        $sql = "SELECT * FROM `pagamento` WHERE 1 ";
+        $resultado=mysqli_query(GetMysql(), $sql);
+        return $resultado;    
+    }
 
 
 ?>

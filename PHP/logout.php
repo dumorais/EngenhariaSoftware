@@ -2,7 +2,7 @@
 session_start();
 //inicia uma nova sessão ou resume uma sessão existente
 
-unset($_SESSION['nome']);
+unset($_SESSION['nome'], $_SESSION['id_cliente'], $_SESSION['id_entregador']);
 //Destruindo as Sessions Login, Nome e perfil
 
 
