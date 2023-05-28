@@ -1,6 +1,9 @@
+
+
 <?php 
 require_once 'PHP/services.php';
 session_start();
+//teste
 //inicia uma nova sessão ou resume uma sessão existente
 ?>
 <!DOCTYPE html>
