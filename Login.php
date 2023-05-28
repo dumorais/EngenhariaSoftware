@@ -1,3 +1,7 @@
+<?php 
+session_start();
+//inicia uma nova sessão ou resume uma sessão existente
+?>
 <!DOCTYPE html>
 <html>
     <header>
@@ -17,7 +21,7 @@
                             <div class="row g-0">
                                 <div class="col-md-12 col-lg-12 d-flex align-items-center">
                                     <div class="card-body p-4 p-lg-4 text-black" style="min-height: 600px;">
-                                        <form>
+                                        <form action="PHP/login.php" method="Post">
                                             <div class="d-flex align-items-center mb-5 pb-1">
                                                 <div class="h-25" style="width: 15%">
                                                     <img src="img/Logo-removebg-preview-teste.png" >
@@ -30,17 +34,17 @@
                                                 <h5 class="fw-normal mb-3 pb-3 text-center" style="letter-spacing: 1px;">Entre na sua conta!</h5>
                     
                                                 <div class="form-outline mb-4 w-50 mx-auto text-center">
-                                                    <input type="email" id="form2Example17" class="form-control form-control-lg" />
+                                                    <input name="Login" type="email" id="form2Example17" class="form-control form-control-lg" />
                                                     <label class="form-label" for="form2Example17">Email</label>
                                                 </div>
                                             
                                                 <div class="form-outline mb-4 w-50 mx-auto text-center">
-                                                    <input type="password" id="form2Example27" class="form-control form-control-lg" />
+                                                    <input name="Senha" type="password" id="form2Example27" class="form-control form-control-lg" />
                                                     <label class="form-label" for="form2Example27">Senha</label>
                                                 </div>
                                             
                                                 <div class="pt-1 mb-4 w-50 mx-auto">
-                                                    <button class="btn btn-dark btn-lg btn-block" type="button">Login</button>
+                                                    <button class="btn btn-dark btn-lg btn-block" type="submit">Login</button>
                                                 </div>
                                                 
                                                 <div class="pt-1 mb-4 w-50 mx-auto">
@@ -129,3 +133,17 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
     <script type = "text/javascript" src="JS/Javascript.js"></script>
 </html>
+
+
+
+<?php 
+        if(isset($_SESSION['msg_login'])){
+            echo "<script>alert('" . $_SESSION['msg_login'] . "');</script>";
+            unset ($_SESSION['msg_login']);
+            //Vendo se a session msg_login existe, se existir mostrar a mensagem e depois apaga ela da session
+            echo "<script> AbrirModal() </script>";
+            //Puxando a function AbrirModal que faz com que o modal do login abra
+
+        } 
+
+        ?>
