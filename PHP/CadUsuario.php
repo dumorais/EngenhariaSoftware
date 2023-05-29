@@ -2,11 +2,6 @@
 //puxando a conexão do banco de dados
 ?>
 <?php
-$conn = new mysqli('localhost', 'root', '', 'cliente');
-
-if($conn === false){
-    die("ERROR: Could not connect");
-}
 
 $Nome = $_POST['Nome'];
 $CPF = $_POST['Cpf'];
