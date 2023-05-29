@@ -6,40 +6,40 @@ session_start();
 <!DOCTYPE html>
 <html>
     <body onload="ActiveBTN()">
-    <?php include('Header.php'); 
-        //Puxando o header pelo php
+    <?php 
+        include('Header.php'); 
+        $entregador = GetEntregador($_SESSION['id_entregador']);
     ?>    
     
     <div class="w-50 mx-auto mb-5">
-        <h2 class="text-center w-100">Lista de entregadores</h2>
+        <h2 class="text-center w-100">Dados Pessoais</h2>
     </div>
 
-    <table class="table table-striped mx-auto w-75">
-        <thead class="thead-dark">
-            <tr class="text-center">
-                <th scope="col">Nome</th>
-                <th scope="col">Email</th>
-                <th scope="col">Telefone</th>
-                <th scope="col">Estado</th>
-                <th scope="col">Cidade</th>
-                <th scope="col">Raio</th>
-                <th scope="col">Editar</th>
-                <th scope="col">Excluir</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="text-center">
-                <td>Teste</td>
-                <td>teste@teste</td>
-                <td>(11)92211-2121</td>
-                <td>São Paulo</td>
-                <td>São Caetano</td>
-                <td>10Km</td>
-                <td><i class="fa fa-pencil" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#editModalEntregadores"></i></td>
-                <td><i class="fa fa-trash" style="cursor: pointer;" aria-hidden="true"></i></td>
-            </tr>
-        </tbody>
-    </table>
+    <form class="row col-12 text-center mx-auto border border-dark rounded w-50 pt-2 pb-2 mt-4" action="PHP\AtualizaEntregador.php" method="post" name="form_entregadores">    
+        <?php while($dados=mysqli_fetch_array($entregador)){    ?>
+        <div class="col-6 text-center">
+          <label>Nome:</label><br><input type="text" placeholder="Nome Completo" value="<?= $dados['nome'] ?>" name="Nome"> <br> <br>
+          <label>CPF:</label><br><input type="text" placeholder="CPF" value="<?= $dados['cpf'] ?>" name="Cpf" class="cpf" readonly><br> <br>
+          <label>Email:</label><br><input type="text" placeholder="Email" value="<?= $dados['email'] ?>" name="Email"><br> <br>
+          <label>Data de nascimento:</label><br><input type="date" placeholder="" value="<?= $dados['dt_nasc'] ?>" name="Dtnasc"><br> <br>
+          <label>Telefone:</label><br><input type="text" placeholder="Telefone" value="<?= $dados['telefone'] ?>" name="Tel" class="tel"><br> <br>
+          <label>Raio de atendimento:</label><br><input type="text" placeholder="" value="<?= $dados['raio_atendimento'] ?>" name="Raio"><br> <br>
+        </div>
+
+        <div class="col-6 text-center">
+          <label>CEP:</label><br><input type="text" placeholder="Telefone" value="<?= $dados['cep'] ?>" name="Cep" class="cep"><br> <br>
+          <label>Endereço:</label><br><input type="text" placeholder="Endereço" value="<?= $dados['rua'] ?>" name="Ende"><br> <br>
+          <label>Número:</label><br><input type="text" placeholder="Numero" value="<?= $dados['numero'] ?>" name="Numero"><br> <br>
+          <label>Bairro:</label><br><input type="text" placeholder="Bairro" value="<?= $dados['bairro'] ?>" name="Bairro"><br> <br>
+          <label>Estado:</label><br><input type="text" placeholder="Estado" value="<?= $dados['estado'] ?>" name="Estado"><br> <br>
+          <label>Cidade:</label><br><input type="text" placeholder="Cidade" value="<?= $dados['cidade'] ?>" name="Cidade"><br> <br>
+        </div>
+        <br><br>
+        <?php } ?>
+        <div class="col-12 text-center">
+          <button class="btn btn-outline-success" type="submit" name="btn_salvar" > Alterar</button>
+        </div>
+      </form>
     
     <!-- Modal -->
     <div class="modal fade" id="editModalEntregadores" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">

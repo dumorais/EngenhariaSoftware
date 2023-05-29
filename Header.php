@@ -24,19 +24,30 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav" id="nav">
-                <li class="nav-item"><a class="nav-link" href="Entregadores.php">Entregadores <span class="sr-only">(current)</span></a></li>
-                <li class="nav-item"><a class="nav-link" href="Usuarios.php">Usuários</a></li>
-                <li class="nav-item"><a class="nav-link" href="Endereco.php">Endereços</a> 
-                <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cadastros </a> 
-                <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
-                    <a class="dropdown-item" href="Cadastro_Entregadores.php">Entregadores</a> 
-                    <a class="dropdown-item" href="Cadastro_Usuarios.php">Usuários</a> 
-                    <a class="dropdown-item" href="Cadastro_Endereco.php">Endereços</a> 
-                </div> </li> </li> 
-                <li><a class="mr-2 position-absolute" style="right: 80px !important;" href="Pedido_Entregador.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i></button></a></li> 
+                <?php if(isset($_SESSION['id_entregador'])){?>
+                    <li class="nav-item"><a class="nav-link" href="Entregadores.php">Dados Pessoais <span class="sr-only">(current)</span></a></li>
+                <?php } ?>
+                <?php if(isset($_SESSION['id_cliente'])){?>
+                    <li class="nav-item"><a class="nav-link" href="Usuarios.php">Dados Pessoais</a></li>
+                    <li class="nav-item"><a class="nav-link" href="Endereco.php">Endereços</a> 
+                <?php } ?>
+                <?php if(isset($_SESSION['id_cliente'])){?>
+                    <li class="nav-item dropdown"> <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Cadastros </a> 
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink"> 
+                        <a class="dropdown-item" href="Cadastro_Endereco.php">Endereços</a> 
+                    </div> </li> </li> 
+                <?php } ?>
+                <?php 
+                if(isset($_SESSION['id_entregador'])){?>
+                    <li><a class="mr-2 position-absolute" style="right: 80px !important;" href="Pedido_Entregador.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i></button></a></li> 
+                <?php } ?>
+                <?php 
+                if(isset($_SESSION['id_cliente'])){?>
+                    <li><a class="mr-2 position-absolute" style="right: 80px !important;" href="Detalhes_Pedido.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-history" aria-hidden="true"></i></button></a></li> 
+                <?php } ?>
                 <?php 
                 if(isset($_SESSION['id_cliente'])){ ?>
-                <li><a class="mr-2 position-absolute" style="right: 125px !important;" href="Pedido.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-motorcycle" aria-hidden="true"></i></button></a></li>
+                    <li><a class="mr-2 position-absolute" style="right: 125px !important;" href="Pedido.php"><button type="button" class="btn btn-outline-light"><i class="fa fa-motorcycle" aria-hidden="true"></i></button></a></li>
                 <?php } ?>
                 <form action="PHP/logout.php"><li><button style="right: 0px !important;"  type="submit" class="btn btn-outline-light mr-2 position-absolute">Logout</button></li></form>
             </ul>

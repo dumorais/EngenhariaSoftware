@@ -18,9 +18,9 @@ include('PHP/services.php');
     <form class="row  text-center mx-auto border border-dark rounded w-50 pt-2 pb-2 mt-4" action="PHP\pedido.php" method="post" name="form_entregadores">    
     
         <div class="col-12 text-center">
-            <label>Endereço de retirada:</label><br><input class="w-50" type="text" placeholder="Endereço Completo" value="" name="Endereco_Retirada"> <br> <br>
+            <label>Endereço de retirada:</label><br><input class="w-50" type="text" placeholder="Endereço Completo" value="" name="Endereco_Retirada" onfocusout="ValorRandom()"> <br> <br>
             <label>Endereço de entrega:</label> <br>
-            <select name="Endereco_Entrega" class="form-select w-50" style="width: 53%;" aria-label="Default select example">
+            <select name="Endereco_Entrega" class="form-select w-50" style="width: 53%;" aria-label="Default select example" onchange="ValorRandom()">
             <?php while($ende=mysqli_fetch_array($enderecos)){    ?>
             <option value=<?= $ende['id_endereco']?>><?= $ende['rua']?>, <?= $ende['numero']?></option> 
             <?php } ?>
@@ -30,11 +30,12 @@ include('PHP/services.php');
             <?php while($pag=mysqli_fetch_array($pagamentos)){    ?>
                 <option value=<?= $pag['id_pagamento']?>><?= $pag['desc']?></option>
             <?php } ?>
-            </select>
+            </select><br>
+            <label>Valor:</label><label id="valor" style="display: none;"></label>
         </div>
         <br><br>
         <div class="col-12 text-center mt-4">
-            <button class="btn btn-outline-secondary" type="submit" name="btn_salvar">Pedir</button>
+            <button class="btn btn-outline-success" type="submit" name="btn_salvar">Pedir</button>
         </div>
     </form>
     

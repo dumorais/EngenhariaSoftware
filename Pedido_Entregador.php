@@ -6,8 +6,9 @@ session_start();
 <!DOCTYPE html>
 <html>
     <body onload="ActiveBTN()">
-    <?php include('Header.php'); 
-        //Puxando o header pelo php
+    <?php 
+        include('Header.php'); 
+        $pedidos = GetPedidoAndamentoEntregador();
     ?>
     
     <div class="w-50 mx-auto mb-5">
@@ -15,43 +16,19 @@ session_start();
     </div>
     
         <div class="col-12 d-flex flex-wrap" style="margin-left: 11% !important;">
+            <?php while($ped=mysqli_fetch_array($pedidos)){    ?>
             <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
-                <h5>Pedido #0001</h5><br>
-                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <button id="BTN_Aceitar" class="btn btn-outline-success" type="button" name="btn_pedido" onclick="VisualBTN()">Aceitar</button>
+            <form action="PHP/AceitaPedido.php" method="post">
+            <h5>Pedido #<?= $ped['id_pedido'] ?></h5><br>
+            <input type="text" value="<?= $ped['id_pedido'] ?>" style="display:none;" name="id_pedido">
+            <label class="w-50 text-left">R$<?= $ped['valor'] ?>,00</label><label class="w-50 text-right"><?= $ped['emitido'] ?></label><br>
+            <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="<?= $ped['endereco_retirada'] ?>" name="Endereco_Retirada" readonly><br> <br>
+            <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="<?= $ped['rua'] ?>, <?= $ped['numero'] ?> - <?= $ped['bairro'] ?>" name="Endereco_Entrega" readonly><br> <br>
+                <button id="BTN_Aceitar" class="btn btn-outline-success" type="submit" name="btn_pedido">Aceitar</button>
                 <button id="BTN_Recusar" class="btn btn-outline-danger" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Recusar</button>
-                <a id="BTN_Visualizar" href="Visualiza_Pedido.php" style="display: none;"><button class="btn btn-outline-secondary" type="button" name="btn_pedido">Visualizar</button></a>
+            <form>
             </div>
-            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
-                <h5>Pedido #0001</h5><br>
-                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <a href="Visualiza_Pedido.html"><button class="btn btn-outline-secondary" type="button" name="btn_pedido">Visualizar</button></a>
-            </div>
-            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
-                <h5>Pedido #0001</h5><br>
-                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <button class="btn btn-outline-secondary" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Visualizar</button>
-            </div>
-            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
-                <h5>Pedido #0001</h5><br>
-                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <button class="btn btn-outline-secondary" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Visualizar</button>
-            </div>
-            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
-                <h5>Pedido #0001</h5><br>
-                <label class="w-50 text-left">R$10,00</label><label class="w-50 text-right">28/04/2023 12:05</label><br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <button class="btn btn-outline-secondary" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Visualizar</button>
-            </div>
+            <?php } ?>
         </div>
 
         <!-- Modal -->

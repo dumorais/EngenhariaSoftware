@@ -1,12 +1,10 @@
+<?php require_once 'conexao.php'; 
+//puxando a conexão do banco de dados
+?>
 <?php
-$conn = new mysqli('localhost', 'root', '', 'entregadores');
-
-if($conn === false){
-    die("ERROR: Could not connect");
-}
-
+session_start();
+$id_entregador = $_SESSION['id_entregador'];
 $Nome = $_POST['Nome'];
-$CPF = $_POST['Cpf'];
 $Email = $_POST['Email'];
 $Tel = $_POST['Tel'];
 $Dtnasc = $_POST['Dtnasc'];
@@ -17,12 +15,11 @@ $Raio = $_POST['Raio'];
 $Estado = $_POST['Estado'];
 $Cep = $_POST['Cep'];
 $Cidade = $_POST['Cidade'];
-$Senha = $_POST['Senha'];
 
-$sql = "UPDATE entregadores SET nome = '$Nome', email = '$Email', cpf = '$CPF', telefone = '$Tel', dt_nasc = '$Dtnasc', rua = '$Ende', numero = '$Num', bairro = '$Bairro', 
-cidade = '$Cidade', raio_atendimento = '$Raio', estado  = '$Estado', cep = $Cep, senha = '$Senha'  WHERE id_entregador = ???";
 
-mysqli_query($conn, $sql);
+$sql = "UPDATE entregador SET nome = '$Nome', email = '$Email', telefone = '$Tel', dt_nasc = '$Dtnasc', rua = '$Ende', numero = '$Num', bairro = '$Bairro', 
+cidade = '$Cidade', raio_atendimento = '$Raio', estado  = '$Estado', cep = $Cep  WHERE id_entregador = $id_entregador";
 
-mysqli_close($conn);
+$resultado=mysqli_query(GetMysql(),$sql);
+header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

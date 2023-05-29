@@ -1,11 +1,9 @@
+<?php require_once 'conexao.php'; 
+//puxando a conexão do banco de dados
+?>
 <?php
-$conn = new mysqli('localhost', 'root', '', 'endereco');
-
-if($conn === false){
-    die("ERROR: Could not connect");
-}
-
-$Idcliente = $_POST[????];
+session_start();
+$id_endereco = $_POST['id_endereco'];
 $Ende = $_POST['Ende'];
 $Numero = $_POST['Numero'];
 $Bairro = $_POST['Bairro'];
@@ -13,9 +11,8 @@ $Cep = $_POST['Cep'];
 $Estado = $_POST['Estado'];
 $Cidade = $_POST['Cidade'];
 
-$sql = "UPDATE endereco SET  rua = '$Ende', numero = '$Numero', bairro = '$Bairro', cidade = '$Cidade', estado = '$Estado', cep = '$Cep' WHERE id_endereco = ????;
+$sql = "UPDATE endereco SET  rua = '$Ende', numero = '$Numero', bairro = '$Bairro', cidade = '$Cidade', estado = '$Estado', cep = '$Cep' WHERE id_endereco = $id_endereco";
 
-mysqli_query($conn, $sql);
-
-mysqli_close($conn);
+$resultado=mysqli_query(GetMysql(),$sql);
+header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

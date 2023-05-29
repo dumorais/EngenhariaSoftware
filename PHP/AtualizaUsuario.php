@@ -1,20 +1,17 @@
+<?php require_once 'conexao.php'; 
+//puxando a conexão do banco de dados
+?>
 <?php
-$conn = new mysqli('localhost', 'root', '', 'cliente');
-
-if($conn === false){
-    die("ERROR: Could not connect");
-}
-
+session_start();
+$Id_cliente = $_SESSION['id_cliente'];
 $Nome = $_POST['Nome'];
-$CPF = $_POST['Cpf'];
 $Email = $_POST['Email'];
 $Tel = $_POST['Tel'];
 $Dtnasc = $_POST['Dtnasc'];
-$Senha = $_POST['Senha'];
 
-$sql = "UPDATE cliente set nome = '$Nome', email = '$Email', cpf = '$Cpf', dt_nasc = '$Dtnasc', senha = '$Senha' WHERE id_cliete = ????";
+$sql = "UPDATE cliente set nome = '$Nome', email = '$Email',  dt_nasc = '$Dtnasc', telefone = '$Tel' WHERE id_cliente = $Id_cliente";
 
-mysqli_query($conn, $sql);
+$resultado=mysqli_query(GetMysql(),$sql);
 
-mysqli_close($conn);
+header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

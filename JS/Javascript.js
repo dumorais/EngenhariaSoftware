@@ -15,16 +15,18 @@ function ActiveBTN(){
     var lenght = Items.length;
     if(window.location.href.split("/").pop().match(/Cadastro.*/)){
         document.getElementById("navbarDropdownMenuLink").className = document.getElementById("navbarDropdownMenuLink").className + " ActiveBtn";
-    }else{ 
+    }else if(document.getElementById("navbarDropdownMenuLink") != null){ 
         document.getElementById("navbarDropdownMenuLink").className = document.getElementById("navbarDropdownMenuLink").className + " text-white";
     }
-    for(var i = 0; i < lenght-1; i++){
-        if(Items[i].getAttribute("href") == window.location.href.split("/").pop()){
-            Items[i].className = Items[i].className + " ActiveBtn";
-            console.log(Items[i]);
-        }
-        else{
-            Items[i].className = "nav-link text-white";
+    for(var i = 0; i <= lenght; i++){
+        if(Items[i].getAttribute("href") != '#'){
+            if(Items[i].getAttribute("href") == window.location.href.split("/").pop()){
+                Items[i].className = Items[i].className + " ActiveBtn";
+                console.log(Items[i]);
+            }
+            else{
+                Items[i].className = "nav-link text-white";
+            }
         }
     }
     
@@ -186,4 +188,29 @@ function ChangeTab(){
  
     
     
+}
+
+function Finalizar(){
+    $.post( "PHP/FinalizarPedido.php", function(){
+        console.log("teste")
+      });
+}
+
+function GetEndereco(id_endereco){
+    document.getElementById("Ende").value = document.getElementById("rua-" + id_endereco).innerHTML;
+    document.getElementById("Bairro").value = document.getElementById("bairro-" + id_endereco).innerHTML;
+    document.getElementById("Numero").value = document.getElementById("numero-" + id_endereco).innerHTML;
+    document.getElementById("Estado").value = document.getElementById("estado-" + id_endereco).innerHTML;
+    document.getElementById("Cidade").value = document.getElementById("cidade-" + id_endereco).innerHTML;
+    document.getElementById("Cep").value = document.getElementById("cep-" + id_endereco).innerHTML;
+    document.getElementById("id_endereco").value = id_endereco;
+    console.log("teste");
+}
+
+function ValorRandom(){
+    var valor = Math.floor(Math.random() * 100);
+    document.getElementById("valor").innerHTML = valor;
+    $("#valor" ).show();
+    console.log("vsf")
+
 }

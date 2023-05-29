@@ -1,3 +1,6 @@
+<?php require_once 'conexao.php'; 
+//puxando a conexão do banco de dados
+?>
 <?php
 $conn = new mysqli('localhost', 'root', '', 'cliente');
 
@@ -12,9 +15,9 @@ $Tel = $_POST['Tel'];
 $Dtnasc = $_POST['Dtnasc'];
 $Senha = $_POST['Senha'];
 
-$sql = "INSERT INTO cliente (nome, email, cpf, dt_nasc, senha) VALUES ('$Nome', '$Email', '$Cpf', '$Dtnasc', '$Senha')";
+$sql = "INSERT INTO cliente (nome, email, cpf, dt_nasc, senha, telefone) VALUES ('$Nome', '$Email', '$CPF', '$Dtnasc', '$Senha', '$Tel')";
 
-mysqli_query($conn, $sql);
+$resultado=mysqli_query(GetMysql(),$sql);
 
-mysqli_close($conn);
+header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

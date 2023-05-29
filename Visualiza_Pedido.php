@@ -7,8 +7,9 @@ session_start();
 <html>
 <body onload="ActiveBTN()">
 
-    <?php include('Header.php'); 
-        //Puxando o header pelo php
+    <?php 
+        include('Header.php'); 
+        $pedidos = GetPedidosAceito($_SESSION['id_pedido']);
     ?>
 
     <!-- MultiStep Form -->
@@ -16,8 +17,9 @@ session_start();
     <div class="row justify-content-center mt-0">
         <div class="col-11 col-sm-9 col-md-7 col-lg-6 text-center p-0 mt-3 mb-2">
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <?php while($ped=mysqli_fetch_array($pedidos)){    ?>
                 <h2><strong>Siga os passos para finalizar o pedido!</strong></h2>
-                <p>Pedido #0001</p>
+                <p>Pedido #<?= $ped['id_pedido'] ?></p>
                 <div class="row">
                     <div class="col-md-12 mx-0">
                         <form id="msform">
@@ -31,17 +33,18 @@ session_start();
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Endereço de Busca</h2>
-                                    <input type="text" name="ende_busca" placeholder="" readonly/>
+                                    <input value="<?= $ped['endereco_retirada'] ?>" type="text" name="ende_busca" placeholder="" readonly/>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Entregar"/>
+                                <input type="button" name="next" class="next action-button" value="Entregar" />
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title">Endereço de Entrega</h2>
-                                    <input type="text" name="ende_entrega" placeholder="" readonly/>
+                                    <input value="<?= $ped['rua'] ?>, <?= $ped['numero'] ?> - <?= $ped['bairro'] ?>" type="text" name="ende_entrega" placeholder="" readonly/>
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Finalizar"/>
+                                <input type="button" name="next" class="next action-button" value="Finalizar" onclick="Finalizar()"/>
                             </fieldset>
+                            <?php } ?>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title text-center">Successo!</h2>

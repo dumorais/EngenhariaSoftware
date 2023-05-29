@@ -13,7 +13,7 @@ session_start();
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     </header>
     <body>
-        <section class="vh-100" style="background-color: #70007C;">
+        <section class="" style="background-color: #70007C;">
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col col-xl-10">
@@ -65,58 +65,66 @@ session_start();
                                         </div>
                                         <div id="formUser" style="display: none;">
                                             <i class="fa fa-arrow-circle-left" style="font-size: 30px; cursor: pointer;color: #70007C;" aria-hidden="true" onclick="VoltarUser()"></i>
+                                            <form action="PHP/CadUsuario.php"  method="post">
+                                                <fieldset class="row col-12 text-center mx-auto w-75 pt-2 pb-2 border border-dark rounded"  name="form_entregadores"> 
+                                                    <legend style="font-size:22px; width: 43%;" class="text-left ml-5 pl-4">Cadastro de Usuários</legend>
+                                                    <div class="col-6 text-center">
+                                                        <label>Nome:</label><br><input type="text" placeholder="Nome Completo" value="" name="Nome"> <br> <br>
+                                                        <label>CPF:</label><br><input type="text" placeholder="CPF" value="" name="Cpf" class="cpf"><br> <br>
+                                                        <label>Email:</label><br><input type="text" placeholder="Email" value="" name="Email"><br> <br>
+                                                    </div>
                                             
-                                            <fieldset class="row col-12 text-center mx-auto w-75 pt-2 pb-2 border border-dark rounded"  method="post" name="form_entregadores"> 
-                                                <legend style="font-size:22px; width: 43%;" class="text-left ml-5 pl-4">Cadastro de Usuários</legend>
-                                                <div class="col-6 text-center">
-                                                    <label>Nome:</label><br><input type="text" placeholder="Nome Completo" value="" name="Nome"> <br> <br>
-                                                    <label>CPF:</label><br><input type="text" placeholder="CPF" value="" name="Cpf" class="cpf"><br> <br>
-                                                    <label>Email:</label><br><input type="text" placeholder="Email" value="" name="Email"><br> <br>
-                                                    <label>Senha:</label><br><input type="password" placeholder="" value="" name="Senha"><br> <br>
-                                                </div>
-                                        
-                                                <div class="col-6 text-center">
-                                                    <label>Telefone:</label><br><input type="text" placeholder="Telefone" value="" name="Tel" class="tel"><br> <br>
-                                                    <label>Data de nascimento:</label><br><input type="date" placeholder="" value="" name="Dtnasc"><br> <br>
-                                                    <label>Login:</label><br><input type="text" placeholder="Login" value="" name="Login"><br> <br>
-                                                    <label>Confirmar Senha:</label><br><input type="password" placeholder="" value="" name="Confirma _Senha"><br> <br>
-                                                </div>
-                                                <br><br>
-                                                <div class="col-12 text-center">
-                                                    <button class="btn btn-outline-success" type="submit" name="btn_salvar" formaction="PHP\CadEntregador.php"> Salvar</button>
-                                                </div>
-                                            </fieldset>
+                                                    <div class="col-6 text-center">
+                                                        <label>Telefone:</label><br><input type="text" placeholder="Telefone" value="" name="Tel" class="tel"><br> <br>
+                                                        <label>Data de nascimento:</label><br><input type="date" placeholder="" value="" name="Dtnasc"><br> <br>
+                                                        <label>Senha:</label><br><input type="password" placeholder="" value="" name="Senha"><br> <br>
+                                                        <label>Confirmar Senha:</label><br><input type="password" placeholder="" value="" name="Confirma _Senha"><br> <br>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="col-12 text-center">
+                                                        <button class="btn btn-outline-success" type="submit" name="btn_salvar"> Salvar</button>
+                                                    </div>
+                                                </fieldset>
+                                            </form>
                                         </div>
                                         <div id="formEntr" style="display: none;"> 
                                             <i class="fa fa-arrow-circle-left" style="font-size: 30px; cursor: pointer;color: #70007C;" aria-hidden="true" onclick="VoltarEntr()"></i>   
-                                            <fieldset class="row col-12 text-center mx-auto border border-dark rounded w-100 pt-2 pb-2" method="post" name="form_entregadores">  
-                                                <legend style="font-size:22px; width: 37%;" class="text-left ml-5 pl-4">Cadastro de Entregadores</legend>  
-                                                <div class="col-3 text-center">
-                                                    <label>Nome:</label><br><input type="text" placeholder="Nome Completo" value="" name="Nome"> <br> <br>
-                                                    <label>CPF:</label><br><input type="text" placeholder="CPF" value="" name="Cpf" class="cpf"><br> <br>
-                                                    <label>Email:</label><br><input type="text" placeholder="Email" value="" name="Email"><br> <br>
-                                                </div>
-                                                <div class="col-3 text-center">
-                                                    <label>Data de nascimento:</label><br><input type="date" placeholder="" value="" name="Dtnasc"><br> <br>
-                                                    <label>Telefone:</label><br><input type="text" placeholder="Telefone" value="" name="Tel" class="tel"><br> <br>
-                                                    <label>Raio de atendimento:</label><br><input type="text" placeholder="" value="" name="  Raio"><br> <br>
-                                                </div>
-                                        
-                                                <div class="col-3 text-center">
-                                                    <label>CEP:</label><br><input type="text" placeholder="Telefone" value="" name="Cep" class="cep"><br> <br>
-                                                    <label>Endereço:</label><br><input type="text" placeholder="Endereço" value="" name="Ende"><br> <br>
-                                                    <label>Número:</label><br><input type="text" placeholder="Numero" value="" name="Numero"><br> <br>
-                                                </div>
-                                                <div class="col-3 text-center">
-                                                    <label>Bairro:</label><br><input type="text" placeholder="Bairro" value="" name="Bairro"><br> <br>
-                                                    <label>Estado:</label><br><input type="text" placeholder="Estado" value="" name="Estado"><br> <br>
-                                                    <label>Cidade:</label><br><input type="text" placeholder="Cidade" value="" name="Cidade"><br> <br>
-                                                </div>
-                                                <br><br>
-                                                <div class="col-12 text-center">
-                                                    <button class="btn btn-outline-success" type="submit" name="btn_salvar"> Salvar</button>
-                                                </div>
-                                            </fieldset>
+                                            <form action="PHP\CadEntregador.php" method="post">
+                                                <fieldset class="row col-12 text-center mx-auto border border-dark rounded w-100 pt-2 pb-2"  name="form_entregadores">  
+                                                    <legend style="font-size:22px; width: 37%;" class="text-left ml-5 pl-4">Cadastro de Entregadores</legend>  
+                                                    <div class="col-3 text-center">
+                                                        <label>Nome:</label><br><input type="text" placeholder="Nome Completo" value="" name="Nome"> <br> <br>
+                                                        <label>CPF:</label><br><input type="text" placeholder="CPF" value="" name="Cpf" class="cpf"><br> <br>
+                                                        <label>Email:</label><br><input type="text" placeholder="Email" value="" name="Email"><br> <br>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <label>Data de nascimento:</label><br><input type="date" placeholder="" value="" name="Dtnasc"><br> <br>
+                                                        <label>Telefone:</label><br><input type="text" placeholder="Telefone" value="" name="Tel" class="tel"><br> <br>
+                                                        <label>Raio de atendimento:</label><br><input type="text" placeholder="" value="" name="  Raio"><br> <br>
+                                                    </div>
+                                            
+                                                    <div class="col-3 text-center">
+                                                        <label>CEP:</label><br><input type="text" placeholder="Telefone" value="" name="Cep" class="cep"><br> <br>
+                                                        <label>Endereço:</label><br><input type="text" placeholder="Endereço" value="" name="Ende"><br> <br>
+                                                        <label>Número:</label><br><input type="text" placeholder="Numero" value="" name="Numero"><br> <br>
+                                                    </div>
+                                                    <div class="col-3 text-center">
+                                                        <label>Bairro:</label><br><input type="text" placeholder="Bairro" value="" name="Bairro"><br> <br>
+                                                        <label>Estado:</label><br><input type="text" placeholder="Estado" value="" name="Estado"><br> <br>
+                                                        <label>Cidade:</label><br><input type="text" placeholder="Cidade" value="" name="Cidade"><br> <br>
+                                                    </div>
+                                                    <div class="col-6 text-center">
+                                                        <label>Senha:</label><br><input type="password"  value="" name="Senha"><br> <br>
+                                                    </div>
+                                                    <div class="col-6 text-center">
+                                                        <label>Confirmar Senha:</label><br><input type="password"  value="" ><br> <br>
+                                                    </div>
+                                                    <br><br>
+                                                    <div class="col-12 text-center">
+                                                        <button class="btn btn-outline-success" type="submit" name="btn_salvar"> Salvar</button>
+                                                    </div>
+                                                </fieldset>
+                                            </form> 
                                         </div>
                                         
                                         </div>
