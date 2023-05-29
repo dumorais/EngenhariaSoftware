@@ -227,3 +227,7 @@ function DeleteEndereco(id_endereco){
     }
 
 }
+
+function RecusarPedido(id_pedido){
+    $("#id-" + id_pedido ).hide();
+}

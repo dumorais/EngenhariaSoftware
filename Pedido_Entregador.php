@@ -15,9 +15,9 @@ session_start();
         <h2 class="text-center w-100">Pedidos recebidos</h2>
     </div>
     
-        <div class="col-12 d-flex flex-wrap" style="margin-left: 11% !important;">
+        <div class="d-flex flex-wrap" style="margin-left: 11% !important;">
             <?php while($ped=mysqli_fetch_array($pedidos)){    ?>
-            <div class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
+            <div id="id-<?= $ped['id_pedido'] ?>" class="col-3 rounded w-25 text-center pb-2 shadow-lg p-3 mb-5 bg-white mx-2">
             <form action="PHP/AceitaPedido.php" method="post">
             <h5>Pedido #<?= $ped['id_pedido'] ?></h5><br>
             <input type="text" value="<?= $ped['id_pedido'] ?>" style="display:none;" name="id_pedido">
@@ -25,37 +25,11 @@ session_start();
             <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="<?= $ped['endereco_retirada'] ?>" name="Endereco_Retirada" readonly><br> <br>
             <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="<?= $ped['rua'] ?>, <?= $ped['numero'] ?> - <?= $ped['bairro'] ?>" name="Endereco_Entrega" readonly><br> <br>
                 <button id="BTN_Aceitar" class="btn btn-outline-success" type="submit" name="btn_pedido">Aceitar</button>
-                <button id="BTN_Recusar" class="btn btn-outline-danger" type="button" name="btn_pedido"  data-toggle="modal" data-target="#editModalPedidoEntregador">Recusar</button>
+                <button id="BTN_Recusar" class="btn btn-outline-danger" type="button" name="btn_pedido"  onclick="RecusarPedido(<?= $ped['id_pedido'] ?>)">Recusar</button>
             <form>
             </div>
             <?php } ?>
         </div>
-
-        <!-- Modal -->
-    <div class="modal fade" id="editModalPedidoEntregador" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" style="max-width: 70%;" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Pedido</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-            </button>
-            </div>
-            <div class="modal-body">
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <label>Endereço de retirada:</label><br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Retirada" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-                <label>Endereço de entrega:</label> <br><input class="w-100" type="text" placeholder="" value="" name="Endereco_Entrega" readonly><br> <br>
-            </div>
-            <div class="modal-footer">
-            <button type="button" class="btn btn-outline-danger" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-outline-secondary" type="submit">Salvar</button>
-            </div>
-        </div>
-        </div>
-    </div>
     
     </body>
 
