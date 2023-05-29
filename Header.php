@@ -18,7 +18,12 @@
 </header>
     <body>
     <nav class="navbar navbar-expand-lg navbar-light mb-2" style="background-color: #70007C;">
+    <?php if(isset($_SESSION['id_entregador'])){?>
     <a class="navbar-brand" href="Entregadores.html" style="color: #E4E460;">Flash Entregas</a>
+    <?php } ?>
+    <?php if(isset($_SESSION['id_cliente'])){?>
+    <a class="navbar-brand" href="Detalhes_Pedido.php" style="color: #E4E460;">Flash Entregas</a>
+    <?php } ?>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
