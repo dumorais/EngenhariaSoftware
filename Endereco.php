@@ -38,7 +38,8 @@ session_start();
             <td id="estado-<?=$ende['id_endereco']?>"><?= $ende['estado'] ?></td>
             <td id="cep-<?=$ende['id_endereco']?>"><?= $ende['cep'] ?></td>
             <td><i class="fa fa-pencil" style="cursor: pointer;" aria-hidden="true" data-toggle="modal" data-target="#editModalEnderecos" onclick="GetEndereco(<?=$ende['id_endereco']?>)"></i></td>
-            <td><i class="fa fa-trash" style="cursor: pointer;" aria-hidden="true"></i></td>
+            <td><i class="fa fa-trash" style="cursor: pointer;" aria-hidden="true" onclick="DeleteEndereco(<?=$ende['id_endereco']?>)"></i></td>
+            <td id="id-<?=$ende['id_endereco']?>" style="display: none;"><?=$ende['id_endereco']?></td>
             </tr>
         </tbody>
         <?php } ?>

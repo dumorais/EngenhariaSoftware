@@ -30,8 +30,8 @@ include('PHP/services.php');
             <?php while($pag=mysqli_fetch_array($pagamentos)){    ?>
                 <option value=<?= $pag['id_pagamento']?>><?= $pag['desc']?></option>
             <?php } ?>
-            </select><br>
-            <label>Valor:</label><label id="valor" style="display: none;"></label>
+            </select><br><br>
+            <label>Valor:</label> &nbsp <input type="text" id="valor" style="display: none; width: 14%;" name="Valor" readonly>
         </div>
         <br><br>
         <div class="col-12 text-center mt-4">

@@ -21,5 +21,6 @@ $sql = "UPDATE entregador SET nome = '$Nome', email = '$Email', telefone = '$Tel
 cidade = '$Cidade', raio_atendimento = '$Raio', estado  = '$Estado', cep = $Cep  WHERE id_entregador = $id_entregador";
 
 $resultado=mysqli_query(GetMysql(),$sql);
+$_SESSION['msg'] = "Alterado com sucesso!";
 header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

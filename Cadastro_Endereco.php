@@ -21,7 +21,7 @@ session_start();
         </div>
 
         <div class="col-6 text-center">
-          <label>CEP:</label><br><input type="text" placeholder="Telefone" value="" name="Cep" class="cep"><br> <br>
+          <label>CEP:</label><br><input type="text" placeholder="CEP" value="" name="Cep" class="cep"><br> <br>
           <label>Estado:</label><br><input type="text" placeholder="Estado" value="" name="Estado"><br> <br>
           <label>Cidade:</label><br><input type="text" placeholder="Cidade" value="" name="Cidade"><br> <br>
         </div>
@@ -37,3 +37,10 @@ session_start();
     <script type = "text/javascript" src="JS/Javascript.js"></script>
 
 </html>
+
+<?php 
+if(isset($_SESSION['msg'])){
+  echo "<script>alert('" . $_SESSION['msg'] . "');</script>";
+  unset ($_SESSION['msg']);
+
+} ?>

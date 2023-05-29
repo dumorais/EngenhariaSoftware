@@ -52,9 +52,16 @@
                 <form action="PHP/logout.php"><li><button style="right: 0px !important;"  type="submit" class="btn btn-outline-light mr-2 position-absolute">Logout</button></li></form>
             </ul>
             <?php 
-                if(isset($_SESSION['nome'])){
-                    echo " <div class='text-white position-absolute' style='right: 195px !important;'> Olá, " . $_SESSION['nome'] . " </div> ";
-                } 
+                if(isset($_SESSION['id_cliente'])){
+                    if(isset($_SESSION['nome'])){
+                        echo " <div class='text-white position-absolute' style='right: 195px !important;'> Olá, " . $_SESSION['nome'] . " </div> ";
+                    } 
+                }
+                if(isset($_SESSION['id_entregador'])){
+                    if(isset($_SESSION['nome'])){
+                        echo " <div class='text-white position-absolute' style='right: 147px !important;'> Olá, " . $_SESSION['nome'] . " </div> ";
+                    } 
+                }
                 ?>
         </div>
     </nav>

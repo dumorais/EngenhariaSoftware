@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.0
+-- version 5.2.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Maio-2023 às 15:22
--- Versão do servidor: 10.4.24-MariaDB
--- versão do PHP: 7.4.29
+-- Tempo de geração: 29/05/2023 às 19:03
+-- Versão do servidor: 10.4.28-MariaDB
+-- Versão do PHP: 8.1.17
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -21,10 +21,12 @@ SET time_zone = "+00:00";
 -- Banco de dados: `flash_entregas`
 --
 
+CREATE DATABASE flash_entregas;
+USE flash_entregas;
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `cliente`
+-- Estrutura para tabela `cliente`
 --
 
 CREATE TABLE `cliente` (
@@ -35,20 +37,20 @@ CREATE TABLE `cliente` (
   `dt_nasc` date NOT NULL,
   `senha` varchar(60) NOT NULL,
   `telefone` varchar(20) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `cliente`
+-- Despejando dados para a tabela `cliente`
 --
 
 INSERT INTO `cliente` (`id_cliente`, `nome`, `email`, `cpf`, `dt_nasc`, `senha`, `telefone`) VALUES
-(1, 'Teste 1', 'teste@hotmail.com', '123.456.789-10', '2013-05-01', 'teste123', '(11) 92786-0987'),
+(1, 'Teste ', 'teste@hotmail.com', '123.456.789-10', '2013-05-01', 'teste123', '(11) 92786-0987'),
 (2, 'Eduardo', 'eduardo@hotmail.com', '', '2001-01-01', 'edu123', '');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `endereco`
+-- Estrutura para tabela `endereco`
 --
 
 CREATE TABLE `endereco` (
@@ -60,21 +62,20 @@ CREATE TABLE `endereco` (
   `cidade` varchar(30) NOT NULL,
   `estado` varchar(20) NOT NULL,
   `cep` varchar(10) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `endereco`
+-- Despejando dados para a tabela `endereco`
 --
 
 INSERT INTO `endereco` (`id_endereco`, `id_cliente`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`) VALUES
-(1, 1, 'Rua teste', 11, 'teste', 'Scs', 'São Paulo', '09876-222'),
-(4, 1, 'Rua Silva', 301, 'Maua', 'São Caetano', 'São Paulo', '09876-330'),
-(5, 1, 'Rua Carlos', 301, 'Maua', 'São Caetano', 'São Paulo', '09767-330');
+(4, 1, 'Rua Silva Teixeira', 301, 'Maua', 'São Caetano', 'São Paulo', '09876-330'),
+(5, 1, 'Rua Carlos Alberto', 301, 'Maua', 'São Caetano', 'São Paulo', '09767-330');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `entregador`
+-- Estrutura para tabela `entregador`
 --
 
 CREATE TABLE `entregador` (
@@ -92,31 +93,31 @@ CREATE TABLE `entregador` (
   `cep` varchar(10) NOT NULL,
   `raio_atendimento` int(11) NOT NULL,
   `senha` varchar(60) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `entregador`
+-- Despejando dados para a tabela `entregador`
 --
 
 INSERT INTO `entregador` (`id_entregador`, `nome`, `email`, `cpf`, `dt_nasc`, `telefone`, `rua`, `numero`, `bairro`, `cidade`, `estado`, `cep`, `raio_atendimento`, `senha`) VALUES
 (1, 'Sujiroq Memami', 'SujiroqMemami@gmail.com', '12312312312', '2002-01-01', '(11) 91234-1234', 'amanssa corno', 69, 'F rainha', 'São Paulo', 'São Paulo', '1002', 10, 'tesaodevaca'),
 (5, 'teste', 'aaa@Aaa', '123.123.123-22', '2023-05-27', '(11) 11111-1111', 'teste', 11, 'teat', 'sp', 'sp', '06160-880', 100, '1231234'),
 (9, 'Fujiro Kamyamoto', 'FujiroKamyamoto@gmail.com', '12312312311', '2002-01-01', '11912341234', 'pele morreu', 6969, 'pele vive', 'São Paulo', 'São Paulo', '01003-001', 10, 'tesaodevaca'),
-(10, 'Eduardo Morais', 'eduardomorais@hotmail.com', '121.212.424-34', '2001-01-01', '(13) 82372-8478', 'rua silva', 211, 'Maua', 'São Caetano', 'São Paulo', '71387-183', 10, 'edu123');
+(10, 'Eduardo Morais', 'eduardomorais@hotmail.com', '121.212.424-34', '2001-01-01', '(13) 82372-8478', 'rua silva', 211, 'Maua', 'São Caetano', 'São Paulo', '71204', 15, 'edu123');
 
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pagamento`
+-- Estrutura para tabela `pagamento`
 --
 
 CREATE TABLE `pagamento` (
   `id_pagamento` int(11) NOT NULL,
   `desc` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `pagamento`
+-- Despejando dados para a tabela `pagamento`
 --
 
 INSERT INTO `pagamento` (`id_pagamento`, `desc`) VALUES
@@ -126,7 +127,7 @@ INSERT INTO `pagamento` (`id_pagamento`, `desc`) VALUES
 -- --------------------------------------------------------
 
 --
--- Estrutura da tabela `pedido`
+-- Estrutura para tabela `pedido`
 --
 
 CREATE TABLE `pedido` (
@@ -139,38 +140,40 @@ CREATE TABLE `pedido` (
   `emitido` datetime NOT NULL,
   `id_endereco` int(11) NOT NULL,
   `endereco_retirada` varchar(100) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 
 --
--- Extraindo dados da tabela `pedido`
+-- Despejando dados para a tabela `pedido`
 --
 
 INSERT INTO `pedido` (`id_pedido`, `status`, `valor`, `id_entregador`, `id_cliente`, `id_pagamento`, `emitido`, `id_endereco`, `endereco_retirada`) VALUES
-(3, 'Finalizado', 10, NULL, 1, 1, '2023-05-28 21:53:50', 1, 'Rua conceicao, 500 - Santa Paula'),
-(4, 'Finalizado', 15, NULL, 1, 1, '2023-05-29 03:05:24', 1, 'Rua São Paulo, 200 - Santa Paula'),
-(5, 'Finalizado', 10, 1, 1, 1, '2023-05-28 22:52:35', 1, 'teste'),
-(6, 'Finalizado', 10, 10, 1, 1, '2023-05-28 23:49:29', 1, 'rua conceição, 234 - Santa Paula');
+(3, 'Finalizado', 10, NULL, 1, 1, '2023-05-28 21:53:50', 4, 'Rua conceicao, 500 - Santa Paula'),
+(4, 'Finalizado', 15, NULL, 1, 1, '2023-05-29 03:05:24', 4, 'Rua São Paulo, 200 - Santa Paula'),
+(5, 'Finalizado', 10, 1, 1, 1, '2023-05-28 22:52:35', 5, 'teste'),
+(6, 'Finalizado', 10, 10, 1, 1, '2023-05-28 23:49:29', 5, 'rua conceição, 234 - Santa Paula'),
+(7, 'Finalizado', 10, NULL, 1, 1, '2023-05-29 10:27:51', 5, 'eehfuehfueh'),
+(11, 'Finalizado', 20, 10, 1, 1, '2023-05-29 13:56:20', 4, 'Rua y, 200');
 
 --
 -- Índices para tabelas despejadas
 --
 
 --
--- Índices para tabela `cliente`
+-- Índices de tabela `cliente`
 --
 ALTER TABLE `cliente`
   ADD PRIMARY KEY (`id_cliente`),
   ADD UNIQUE KEY `email_UNIQUE` (`email`);
 
 --
--- Índices para tabela `endereco`
+-- Índices de tabela `endereco`
 --
 ALTER TABLE `endereco`
   ADD PRIMARY KEY (`id_endereco`),
   ADD KEY `id_cliente_idx` (`id_cliente`);
 
 --
--- Índices para tabela `entregador`
+-- Índices de tabela `entregador`
 --
 ALTER TABLE `entregador`
   ADD PRIMARY KEY (`id_entregador`),
@@ -178,13 +181,13 @@ ALTER TABLE `entregador`
   ADD UNIQUE KEY `cpf_UNIQUE` (`cpf`);
 
 --
--- Índices para tabela `pagamento`
+-- Índices de tabela `pagamento`
 --
 ALTER TABLE `pagamento`
   ADD PRIMARY KEY (`id_pagamento`);
 
 --
--- Índices para tabela `pedido`
+-- Índices de tabela `pedido`
 --
 ALTER TABLE `pedido`
   ADD PRIMARY KEY (`id_pedido`),
@@ -193,7 +196,7 @@ ALTER TABLE `pedido`
   ADD KEY `id_pagamento_idx` (`id_pagamento`);
 
 --
--- AUTO_INCREMENT de tabelas despejadas
+-- AUTO_INCREMENT para tabelas despejadas
 --
 
 --
@@ -206,7 +209,7 @@ ALTER TABLE `cliente`
 -- AUTO_INCREMENT de tabela `endereco`
 --
 ALTER TABLE `endereco`
-  MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_endereco` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de tabela `entregador`
@@ -224,20 +227,20 @@ ALTER TABLE `pagamento`
 -- AUTO_INCREMENT de tabela `pedido`
 --
 ALTER TABLE `pedido`
-  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_pedido` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
--- Restrições para despejos de tabelas
+-- Restrições para tabelas despejadas
 --
 
 --
--- Limitadores para a tabela `endereco`
+-- Restrições para tabelas `endereco`
 --
 ALTER TABLE `endereco`
   ADD CONSTRAINT `id_cliente` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`);
 
 --
--- Limitadores para a tabela `pedido`
+-- Restrições para tabelas `pedido`
 --
 ALTER TABLE `pedido`
   ADD CONSTRAINT `id_cliente_pedido` FOREIGN KEY (`id_cliente`) REFERENCES `cliente` (`id_cliente`),

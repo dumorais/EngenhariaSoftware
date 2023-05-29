@@ -15,5 +15,6 @@ $sql = "INSERT INTO endereco (id_cliente, rua, numero, bairro, cidade, estado, c
 
 $resultado=mysqli_query(GetMysql(),$sql);
 //echo("Error description: " . $mysqli -> error);
+$_SESSION['msg'] = "Cadastrado com sucesso!";
 header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

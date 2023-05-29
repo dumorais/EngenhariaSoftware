@@ -164,11 +164,11 @@ function ChangeTabHist(){
     $('#atual').fadeOut();
     setTimeout(() => {
         $('#hist').fadeIn();
+        console.log("aaaaaaa");
     }, 1000);
     setTimeout(() => {
         document.getElementById("hist").className = "col-12 d-flex flex-wrap";
     }, 1000);
-    
 }
 
 function ChangeTab(){
@@ -193,7 +193,7 @@ function ChangeTab(){
 function Finalizar(){
     $.post( "PHP/FinalizarPedido.php", function(){
         console.log("teste")
-      });
+    });
 }
 
 function GetEndereco(id_endereco){
@@ -208,9 +208,22 @@ function GetEndereco(id_endereco){
 }
 
 function ValorRandom(){
-    var valor = Math.floor(Math.random() * 100);
-    document.getElementById("valor").innerHTML = valor;
+    var valor = Math.floor(Math.random() * 20);
+    valor += 10;
+    document.getElementById("valor").value = "R$" + valor + ",00";
     $("#valor" ).show();
-    console.log("vsf")
+}
+
+function DeleteEndereco(id_endereco){
+    if (confirm("Tem certeza que deseja apagar?") == true) {
+        $.ajax({
+            method: "POST",
+            url: "PHP/DeleteEndereco.php",
+            data: { id_endereco: $("#id-" + id_endereco).text() }
+        })
+        location.reload();
+    } else {
+
+    }
 
 }

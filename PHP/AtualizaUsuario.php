@@ -12,6 +12,6 @@ $Dtnasc = $_POST['Dtnasc'];
 $sql = "UPDATE cliente set nome = '$Nome', email = '$Email',  dt_nasc = '$Dtnasc', telefone = '$Tel' WHERE id_cliente = $Id_cliente";
 
 $resultado=mysqli_query(GetMysql(),$sql);
-
+$_SESSION['msg'] = "Alterado com sucesso!";
 header("Location: ".$_SERVER['HTTP_REFERER']);
 ?>

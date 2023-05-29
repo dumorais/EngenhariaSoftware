@@ -12,8 +12,8 @@ session_start();
         <link  rel="stylesheet" href="Css\Style.css">
         <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
     </header>
-    <body>
-        <section class="" style="background-color: #70007C;">
+    <body style="background-color: #70007C;">
+        <section class="" >
             <div class="container py-5 h-100">
                 <div class="row d-flex justify-content-center align-items-center h-100">
                     <div class="col col-xl-10">
@@ -49,7 +49,7 @@ session_start();
                                                 
                                                 <div class="pt-1 mb-4 w-50 mx-auto">
                                                     <a class="small text-muted" href="#!">Equeceu a senha?</a>
-                                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Não possui conta? <a onclick="Fade()" style="color: #393f81;cursor: pointer;">Faça seu cadastro aqui!</a></p>
+                                                    <p class="mb-5 pb-lg-2" style="color: #393f81;">Não possui conta? <a onclick="Fade()" style="color: #393f81;cursor: pointer;text-decoration: underline;">Faça seu cadastro aqui!</a></p>
                                                 </div>
                                             </div>
                                         </form>
